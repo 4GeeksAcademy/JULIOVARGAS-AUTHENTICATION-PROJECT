@@ -2,17 +2,19 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [mail, setMail] = useState("")
 	const [password, setPassword] = useState("")
-
+	const navigate = useNavigate()
 	const iniciarSesion = (e)=>{
 		e.preventDefault()
 		actions.login(mail,password)
 		setMail("")
 		setPassword("")
+		navigate("/private")
 	}
 
 	return (
